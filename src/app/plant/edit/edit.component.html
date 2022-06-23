@@ -1,0 +1,45 @@
+<div *ngIf="plant"  class="container">
+    <a href="#" routerLink="/plant/" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="title">Name:</label>
+            <input 
+                formControlName="name"
+                id="name" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors?.['required']">name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label  for="state">State:</label>
+            <div class="form-group">
+                <div *ngFor="let state of plantStates" class="form-check">
+                    <input formControlName="state" class="form-check-input" [value]="state" [id]="state + '_id'" type="radio">
+                    <label class="form-check-label" [for]="state + '_id'">
+                      {{state}}
+                    </label>
+                </div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="title">Description:</label>
+            <textarea 
+                formControlName="description"
+                id="description" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+                <div *ngIf="f['description'].errors?.['required']">description is required.</div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

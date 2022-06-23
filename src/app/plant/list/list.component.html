@@ -1,0 +1,49 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <select (change)="onTypeSeleted($event)" name="type" id="plant-type">
+                <option value="fruit">Fruit</option>
+                <option value="vegetable">Vegetable</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered">
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>State</th>
+              <th width="220px"></th>
+            </tr>
+            <tr *ngFor="let plant of plants">
+              <td>{{ plant.name }}</td>
+              <td>{{ plant.type }}</td>
+              <td>{{ plant.state }}</td>
+              <td>
+                <a href="#" role="button" [routerLink]="['/plant/', plant.id, 'view']" class="btn">View</a>
+                <!-- <a href="#" role="button" [routerLink]="['/plant/', plant.id, 'edit']" class="btn">Edit</a> -->
+                <!-- <button type="button" (click)="deletePlant(plant.id)" class="btn">Delete</button> -->
+              </td>
+            </tr>
+          </table>
+    </div>
+    <div class="row">
+        <nav aria-label="navigation">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="justify-content-end">
+            <a href="#" routerLink="/plant/add/" class="btn float-right btn-success">Add</a>
+        </div>
+    </div>
+    
+    
+ </div>

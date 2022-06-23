@@ -1,0 +1,61 @@
+<div *ngIf="plant"  class="container">
+    
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 d-flex ">
+            <a href="#" routerLink="/plant/" class="btn btn-primary"><-</a>
+            <h3 style="margin-left: 0.5em;">{{plant.name}}</h3>
+        </div>
+        <div class="col-4 justify-content-start">
+            
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            
+            <a href="#" [routerLink]="['/plant/', plant.id, 'edit']" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div style="margin-top: 2em;" class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <img src="https://via.placeholder.com/250x250" alt="plant image placeholder" srcset="">
+                </div>
+                <div style="padding-left: 2em;" class="col d-flex flex-column position-static">
+                    <p>
+                        As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        
+       
+        
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+        <div class="col">
+            State :
+           
+            <div class="form-group">
+                <div *ngFor="let state of plantStates" class="form-check">
+                    <input formControlName="state" class="form-check-input" [value]="state" [id]="state + '_id'" type="radio">
+                    <label class="form-check-label" [for]="state + '_id'">
+                      {{state}}
+                    </label>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+    </div>
+    
+    
+        <div class="col-16 d-flex justify-content-end align-items-center">
+            <a style="margin-right: 2em;"  (click)="delete()"  class="btn btn-danger">Delete</a>
+            
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+    
+    </form>
+</div>
